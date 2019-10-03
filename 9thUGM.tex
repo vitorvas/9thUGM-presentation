@@ -52,14 +52,18 @@
 \begin{frame}
   \frametitle{CDTN}
   \framesubtitle{Nuclear Technology Development Center}
-  \includegraphics[scale=0.07]{figuras/portaria1_CDTN.jpg}
+  \begin{center}
+    \includegraphics[scale=1.1]{figuras/portaria1_CDTN.jpg}
+    \end{center}
 \end{frame}
 
 %-------------------------------------------------
 \begin{frame}
   \frametitle{CDTN}
   \framesubtitle{Nuclear Technology Development Center}
-  \includegraphics[scale=1.3]{figuras/predio_28_noite.jpg}
+    \begin{center}
+      \includegraphics[scale=1.2]{figuras/predio_28_noite.jpg}
+    \end{center}
 \end{frame}
 
 %-------------------------------------------------
@@ -80,9 +84,17 @@
 %-------------------------------------------------
 \begin{frame}
   \frametitle{Thermal-Hydraulics and Neutronics Lab - LTHN}
+  \framesubtitle{Experimental facilities}
   \begin{center}
-    Figura
-    %    \includegraphics[scale=0.2]{figuras/extrator-poco.jpg}
+    \includegraphics[scale=0.2]{figuras/labth.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Thermal-Hydraulics and Neutronics Lab - LTHN}
+  \framesubtitle{Computer Laboratory}
+  \begin{center}
+    \includegraphics[scale=0.3]{figuras/lthn-computers-cropped.jpg}
   \end{center}
 \end{frame}
 
@@ -142,55 +154,99 @@
 
 \begin{frame}
   \frametitle{OpenFOAM + Serpent2 coupling}
-  \framesubtitle{Details}
+  \framesubtitle{Results}
   \begin{center}
 %    \includegraphics[scale=0.2]{figuras/esquema.png}
     
   \end{center}
 \end{frame}
 
-\begin{frame}
-  \frametitle{OpenFOAM + Serpent2 coupling}
-  \framesubtitle{Results}
-  \begin{center}
-
-
-  \end{center}
-\end{frame}
-
-\begin{frame}
+\begin{frame}[fragile] % Coloca isso no frame que tem verbatim
   \frametitle{OpenFOAM + Serpent2 coupling}
   \framesubtitle{Current problems}
   \begin{center}
-    \begin{itemize}
-      \item TESTE
-    \end{itemize}
-    This work 
+  Zirconium hydride: pin initially modelled as TRIGA fuel.\\
+\begin{verbatim}
+  Fatal error in function OTFSabScattering:
+
+  Energy grids differ in OTF S(a,b) interpolation
+
+  Simulation aborted.
+\end{verbatim}
+
+On file \texttt{otfsabscattering.c} we got:
+
+%\begin{verbatim}
+%              /* NOTE: tää on kohtuullisen harvinainen sirontalaki, johon */
+%              /* törmää esim. h/zr ja zr/h -kirjastoissa. Ei ole kunnolla */
+%              /* testattu. */
+%\end{verbatim}
+  
   \end{center}
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{OpenFOAM + Serpent2 coupling}
+  \framesubtitle{Problems}
+  \begin{center}
+    
+
+  \end{center}
+\end{frame}
+
+
 % END SUBSECTION----------------------------------
 
-\subsection{Graici - queima}
+\subsection{NPS}
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{Neutron Extractor}
+  \frametitle{NPS}
+  \framesubtitle{}
+%We are using SERPENT in external source mode to simulate a hybrid system fusion-fission. The geometry simulated is based on concentrically spheres, where there are nine zones filled with the RFS with thorium and ten zones with coolant Li$_{17}$Pb$_{83}$. The source was produced by the D-T fusion reaction generating neutrons of $14.1$ MeV and placed in the central sphere with a radius of 250 cm, as shown in Figure \ref{fusion}.
+
+\frametitle{}
   \framesubtitle{View}
   \begin{center}
-%    \includegraphics[scale=0.2]{figuras/extrator1-original.jpg}
-    Figura de novo.
+    \includegraphics[scale=0.4]{figuras/fusion.png}
+%    \caption{Fusion system geometry.}
+    \label{fusion}
   \end{center}
 \end{frame}
 
-\subsection{Graici - fusao}
+
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{Neutron Extractor}
-  \framesubtitle{Closer view}
-  \begin{center}
-%    \includegraphics[scale=0.2]{figuras/extrator-zoom.jpg}
-    Chega de figuras
-  \end{center}
+  \frametitle{NPS}
+  \framesubtitle{Current Problems}
+  
+%We are having problems to understand how NPS value influences the results of k$_{eff}$(analog) in those simulations. It was noticed that the values of k$_{eff}$(analog) increases considerably when the value of NPS is also increased. Even for high values of NPS (larger than 500000), the values of  k$_{eff}$(analog) obtained for various NPS are considerably different. Table \ref{NPS} shows the k$_{eff}$(analog) values obtained for several NPS values.
+
+\begin{table}[htb!]
+\caption{k$_{eff}$ Results for different NPS}
+\label{NPS}
+\centering
+\vspace{0.5cm}
+\begin{tabular}{c|c|c}\hline
+NPS & k$_{eff}$(analog) & 95\% confidence interval\\ \hline
+
+$10000$ & $0.59490$ & $0.53182-0.65798$\\ \hline
+$20000$ & $0.69282$ & $0.64750-0.73802$\\ \hline
+$30000$ & $0.74796$ & $0.71240-0.78352$\\ \hline
+$40000$ & $0.77101$ & $0.74249-0.79953$\\ \hline
+$50000$ & $0.76816$ & $0.73942-0.79690$\\ \hline
+$60000$ & $0.79388$ & $0.76734-0.82042$\\ \hline
+$100000$ & $0.82596$ & $0.80478-0.84714$\\ \hline
+${\bf 500000}$ & $0.88611$ & $0.87775-0.89447$\\ \hline
+${\bf 1000000}$ & $0.89095$ & $0.88547-0.89643$\\ \hline
+${\bf 10000000}$ & $0.90109$ & $0.89905-0.90313$\\ \hline
+${\bf 20000000}$ & $0.90142$ & $0.90012-0.90272$\\ \hline
+\end{tabular}
+\end{table}
+
+Similar behavior is verified when we use SERPENT to simulate ADS. Is there a limit inferior to NPS?
 \end{frame}
+
 
 %-------------------------------------------------
 %\begin{frame}
