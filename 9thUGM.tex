@@ -71,19 +71,31 @@
   \frametitle{CDTN}
   \framesubtitle{Nuclear Technology Development Center}
   \begin{itemize}
+    \item \textbf{(For now)} Part of Brazilian Nuclear Energy Commission.
   \item Founded in 1952 as IPR (Radioactive Research Institute), part of
-    Minas Gerais Federal University.
+    Minas Gerais Federal University (UFMG).
   \item In 1960, TRIGA Mark 1 reactor inaugurated - first criticality.
-  \item Many areas...
-    \item Neutronics + thermal....
+  \item Many areas related (or not) to nuclear sciences:
+    \begin{itemize}
+    \item Nuclear waste management;
+    \item Environment applications;
+    \item Materials science (nanomaterials, graphene applications...);
+    \item Radiobiology and radioisotopes production for health applications;
+    \item \textbf{Nuclear engineering and Technology;}
+    \end{itemize}
+  \item Postgraduation program (around 100 students).
+%  \item Radioprotection services.
   \end{itemize}
+  \begin{center}
+    \url{http://www.cdtn.br/en/}
+    \end{center}
 \end{frame}
 
 
-\section{Thermal-Hydraulics and Neutronics Lab - LTHN}
+\section{Thermal-Hydraulics and Neutronics Laboratory - LTHN}
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{Thermal-Hydraulics and Neutronics Lab - LTHN}
+  \frametitle{Thermal-Hydraulics and Neutronics Laboratory - LTHN}
   \framesubtitle{Experimental facilities}
   \begin{center}
     \includegraphics[scale=0.2]{figuras/labth.jpg}
@@ -91,7 +103,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Thermal-Hydraulics and Neutronics Lab - LTHN}
+  \frametitle{Thermal-Hydraulics and Neutronics Laboratory - LTHN}
   \framesubtitle{Computer Laboratory}
   \begin{center}
     \includegraphics[scale=0.3]{figuras/lthn-computers-cropped.jpg}
@@ -100,14 +112,15 @@
 
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{Thermal-Hydraulics and Neutronics Lab - LTHN}
+  \frametitle{Thermal-Hydraulics and Neutronics Laboratory - LTHN}
   \framesubtitle{Main activities}
   \begin{center}
     \begin{itemize}
-    \item Experimental thermal-hydraulics: spacer grids, counter current fluid flow, PIV;
-    \item IPR-R1 TRIGA modelling, uncertainty propagation in MC simulations;
-    \item Fusion-fission simulations, advanced fuel burn-up (\textbf{SERPENT});
-    \item Software development $\star$;
+    \item Experimental thermal-hydraulics: spacer grids, counter current fluid flow, PIV.
+    \item IPR-R1 TRIGA modelling, uncertainty propagation in MC simulations.
+    \item Fusion-fission simulations, advanced fuel burn-up (\textbf{SERPENT}).
+    \item Software development ($\star$).
+    \item Modelling and simulations of RMB\\ (Brazilian Multipurpose Reactor $\rightarrow$ detailed project phase).
     \end{itemize}
   \end{center}
 \end{frame}
@@ -115,28 +128,29 @@
 \section{Monte Carlo simulation work}
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{Monte Carlo simulation work}
-  \framesubtitle{Serpent2 use}
-  \textbf{Monte Carlo}
-    \begin{itemize}
-    \item RMB
-    \item Novos combustiveis...
-    \item Fusao...
-    \end{itemize}
-    \vspace{10px}
-  \textbf{Algo aqui?}
-    \begin{itemize}
-    \item bla
-    \end{itemize}
+  \frametitle{Serpent2}
+%  \framesubtitle{Main projects exclusivelly using Serpent2}
+  \textbf{Main projects exclusively using Serpent2}
+  \vspace{10px}
+  \begin{enumerate}
+    \item OpenFOAM + Serpent2 coupling
+    \item Hybrid fusion-fission system
+    \item ADS simulations with Thorium and Uranium
+    \end{enumerate}
+%    \vspace{10px}
+%  \textbf{Algo aqui?}
+%    \begin{itemize}
+%    \item bla
+%    \end{itemize}
 \end{frame}
 
-\subsection{Tiago - acoplamento}
+\subsection{OpenFOAM + Serpent2 coupling}
 %-------------------------------------------------
 \begin{frame}
   \frametitle{OpenFOAM + Serpent2 coupling}
-  \framesubtitle{Objective}
+  \framesubtitle{Problem description}
   \begin{center}
-    Fidelity on the simulation of nuclear systems\\
+    \alert{Fidelity on the simulation of nuclear systems}\\
     \vspace{10px}
     \begin{itemize}
     \item RMB: Brazilian Multipurpose Reactor $\rightarrow$ under design.
@@ -145,7 +159,7 @@
     \end{itemize}
     But why modelling a fuel pin for a plate fuel reactor?
     \begin{itemize}
-    \item Previous work (citar paper annals): tested mesh for a \textbf{TRIGA} pin
+    \item Previous work \cite{Vasconcelos2018}:\\ tested mesh for a \textbf{TRIGA} fuel/pin
     \item Straighforward to extend the methodology to MC approach
     \item Low computational cost
     \end{itemize}
@@ -163,45 +177,33 @@
 
 \begin{frame}[fragile] % Coloca isso no frame que tem verbatim
   \frametitle{OpenFOAM + Serpent2 coupling}
-  \framesubtitle{Current problems}
+  \framesubtitle{Current issues}
   \begin{center}
-  Zirconium hydride: pin initially modelled as TRIGA fuel.\\
+  Zirconium hydride: the pin modelled is actually a TRIGA fuel element.\\
 \begin{verbatim}
   Fatal error in function OTFSabScattering:
-
   Energy grids differ in OTF S(a,b) interpolation
-
   Simulation aborted.
 \end{verbatim}
 
-On file \texttt{otfsabscattering.c} we got:
+On file \texttt{otfsabscattering.c} we get:
 
-%\begin{verbatim}
-%              /* NOTE: tää on kohtuullisen harvinainen sirontalaki, johon */
-%              /* törmää esim. h/zr ja zr/h -kirjastoissa. Ei ole kunnolla */
-%              /* testattu. */
-%\end{verbatim}
+\begin{verbatim}
+/* NOTE: tää on kohtuullisen harvinainen sirontalaki, johon */
+/* törmää esim. h/zr ja zr/h -kirjastoissa. Ei ole kunnolla */
+/* testattu. */
+\end{verbatim}
   
   \end{center}
 \end{frame}
+% END SUBSECTION ----------------------------------
 
 
-\begin{frame}
-  \frametitle{OpenFOAM + Serpent2 coupling}
-  \framesubtitle{Problems}
-  \begin{center}
-    
-
-  \end{center}
-\end{frame}
-
-
-% END SUBSECTION----------------------------------
-
-\subsection{NPS}
+% BEGIN SUBSECTION --------------------------------------
+\subsection{Fusion-fission simulation}
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{NPS}
+  \frametitle{Fusion-fission simulation}
   \framesubtitle{}
 %We are using SERPENT in external source mode to simulate a hybrid system fusion-fission. The geometry simulated is based on concentrically spheres, where there are nine zones filled with the RFS with thorium and ten zones with coolant Li$_{17}$Pb$_{83}$. The source was produced by the D-T fusion reaction generating neutrons of $14.1$ MeV and placed in the central sphere with a radius of 250 cm, as shown in Figure \ref{fusion}.
 
@@ -215,10 +217,11 @@ On file \texttt{otfsabscattering.c} we got:
 \end{frame}
 
 
+
 %-------------------------------------------------
 \begin{frame}
-  \frametitle{NPS}
-  \framesubtitle{Current Problems}
+  \frametitle{Fusion-fission simulation}
+  \framesubtitle{Results}
   
 %We are having problems to understand how NPS value influences the results of k$_{eff}$(analog) in those simulations. It was noticed that the values of k$_{eff}$(analog) increases considerably when the value of NPS is also increased. Even for high values of NPS (larger than 500000), the values of  k$_{eff}$(analog) obtained for various NPS are considerably different. Table \ref{NPS} shows the k$_{eff}$(analog) values obtained for several NPS values.
 
@@ -248,17 +251,25 @@ Similar behavior is verified when we use SERPENT to simulate ADS. Is there a lim
 \end{frame}
 
 
+\subsection{ADS}
 %-------------------------------------------------
-%\begin{frame}
-%  \frametitle{Neutron Extractor}
-%  \framesubtitle{Technical aspects related to neutrongraphy}
-%    \begin{itemize}
-%    \item Collimation ratio: \scalebox{1}{$\left(\frac{L}{D}\right)=\frac{460cm}{10cm}=46$}
-%    \item Neutron to gamma ratio: \scalebox{1.5}{$\frac{n}{\gamma}$} $ = 153 \times 10^4 (mR)^{-1}.cm^{-2}$ \textsuperscript{[}\footnote{A. L. Costa, 2003}\textsuperscript{]} 
-%    \item Only one report on thermal/epithermal neutrons (Cd) ratio: at 3.6 meters over reactor's graphite reflector it is $27$. (Information only) 
-%    \end{itemize}
-%    \vspace{10px}
-%\end{frame}
+\begin{frame}
+  \frametitle{ADS}
+  \framesubtitle{Problem description}
+\end{frame}
+
+%-------------------------------------------------
+\begin{frame}
+  \frametitle{ADS}
+  \framesubtitle{Results}
+\end{frame}
+
+%-------------------------------------------------
+\begin{frame}
+  \frametitle{ADS}
+  \framesubtitle{Known issues}
+\end{frame}
+
 
 \section{Conclusions}
 %-------------------------------------------------
@@ -281,6 +292,12 @@ Similar behavior is verified when we use SERPENT to simulate ADS. Is there a lim
   \vfill
 \end{frame}
 
-
+% ----------------------------
+% References
+\begin{frame}
+    \frametitle{References}
+    \bibliographystyle{apalike}
+    \bibliography{9thUGM.bib}
+\end{frame}
 \end{document}
 
