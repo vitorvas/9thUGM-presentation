@@ -120,7 +120,7 @@
     \item IPR-R1 TRIGA modelling, uncertainty propagation in MC simulations.
     \item Fusion-fission simulations, advanced fuel burn-up (\textbf{SERPENT}).
     \item Software development ($\star$).
-    \item Modelling and simulations of RMB\\ (Brazilian Multipurpose Reactor $\rightarrow$ detailed project phase).
+    \item Modelling and simulations of RMB.\\ (Brazilian Multipurpose Reactor $\rightarrow$ detailed project phase).
     \end{itemize}
   \end{center}
 \end{frame}
@@ -130,12 +130,12 @@
 \begin{frame}
   \frametitle{Serpent2}
 %  \framesubtitle{Main projects exclusivelly using Serpent2}
-  \textbf{Main projects exclusively using Serpent2}
+  \textbf{Projects exclusively using Serpent2}
   \vspace{10px}
   \begin{enumerate}
-    \item OpenFOAM + Serpent2 coupling
-    \item Hybrid fusion-fission system
-    \item ADS simulations with Thorium and Uranium
+    \item OpenFOAM + Serpent2 coupling;
+    \item Hybrid fusion-fission system;
+    \item ADS simulations with Thorium and Uranium;
     \end{enumerate}
 %    \vspace{10px}
 %  \textbf{Algo aqui?}
@@ -155,13 +155,15 @@
     \begin{itemize}
     \item RMB: Brazilian Multipurpose Reactor $\rightarrow$ under design.
     \item Why CFD + Monte Carlo $\rightarrow$ High accuracy level.
-    \item Initialy simplifed model $\rightarrow$ fuel pin.
+    \item Initialy a simplifed model $\rightarrow$ fuel pin.
     \end{itemize}
-    But why modelling a fuel pin for a plate fuel reactor?
+    \vspace{10px}
+    \alert{But why modelling a fuel pin for a plate fuel reactor?}
+    \vspace{10px}
     \begin{itemize}
-    \item Previous work \cite{Vasconcelos2018}:\\ tested mesh for a \textbf{TRIGA} fuel/pin
-    \item Straighforward to extend the methodology to MC approach
-    \item Low computational cost
+    \item Previous work \cite{Vasconcelos2018}, a fine mesh for a \textbf{TRIGA} fuel/pin;
+    \item Straighforward to extend the methodology to an approach using MC;
+    \item Lower computational cost.
     \end{itemize}
   \end{center}
 \end{frame}
@@ -202,17 +204,28 @@ On file \texttt{otfsabscattering.c} we get:
 % BEGIN SUBSECTION --------------------------------------
 \subsection{Fusion-fission simulation}
 %-------------------------------------------------
+
+\begin{frame}
+  \frametitle{Fusion-fission simulation}
+  \framesubtitle{Problem description}
+  \begin{itemize}
+  \item Simulation of a hybrid fusion-fission system.
+  \item Geometry: concentrical spheres, nine zones filled with RFS with thorium and ten zones with coolant Li$_{17}$Pb$_{83}$.
+  \item The source was produced by the D-T fusion reaction generating neutrons of $14.1$ MeV and placed in the central sphere with a radius of 250 cm.
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------
 \begin{frame}
   \frametitle{Fusion-fission simulation}
   \framesubtitle{}
-%We are using SERPENT in external source mode to simulate a hybrid system fusion-fission. The geometry simulated is based on concentrically spheres, where there are nine zones filled with the RFS with thorium and ten zones with coolant Li$_{17}$Pb$_{83}$. The source was produced by the D-T fusion reaction generating neutrons of $14.1$ MeV and placed in the central sphere with a radius of 250 cm, as shown in Figure \ref{fusion}.
+  %We are using SERPENT in external source mode to simulate a hybrid system fusion-fission. The geometry simulated is based on concentrically spheres, where there are nine zones filled with the RFS with thorium and ten zones with coolant Li$_{17}$Pb$_{83}$. The source was produced by the D-T fusion reaction generating neutrons of $14.1$ MeV and placed in the central sphere with a radius of 250 cm, as shown in Figure \ref{fusion}.
 
-\frametitle{}
   \framesubtitle{View}
   \begin{center}
     \includegraphics[scale=0.4]{figuras/fusion.png}
 %    \caption{Fusion system geometry.}
-    \label{fusion}
+%    \label{fusion}
   \end{center}
 \end{frame}
 
@@ -223,7 +236,6 @@ On file \texttt{otfsabscattering.c} we get:
   \frametitle{Fusion-fission simulation}
   \framesubtitle{Results}
   
-%We are having problems to understand how NPS value influences the results of k$_{eff}$(analog) in those simulations. It was noticed that the values of k$_{eff}$(analog) increases considerably when the value of NPS is also increased. Even for high values of NPS (larger than 500000), the values of  k$_{eff}$(analog) obtained for various NPS are considerably different. Table \ref{NPS} shows the k$_{eff}$(analog) values obtained for several NPS values.
 
 \begin{table}[htb!]
 \caption{k$_{eff}$ Results for different NPS}
@@ -232,7 +244,6 @@ On file \texttt{otfsabscattering.c} we get:
 \vspace{0.5cm}
 \begin{tabular}{c|c|c}\hline
 NPS & k$_{eff}$(analog) & 95\% confidence interval\\ \hline
-
 $10000$ & $0.59490$ & $0.53182-0.65798$\\ \hline
 $20000$ & $0.69282$ & $0.64750-0.73802$\\ \hline
 $30000$ & $0.74796$ & $0.71240-0.78352$\\ \hline
@@ -246,8 +257,17 @@ ${\bf 10000000}$ & $0.90109$ & $0.89905-0.90313$\\ \hline
 ${\bf 20000000}$ & $0.90142$ & $0.90012-0.90272$\\ \hline
 \end{tabular}
 \end{table}
+\end{frame}
 
-Similar behavior is verified when we use SERPENT to simulate ADS. Is there a limit inferior to NPS?
+%-------------------------------------------------
+\begin{frame}
+  \frametitle{Fusion-fission simulation}
+  \framesubtitle{Current issues}
+
+  'We are having problems to understand how NPS value influences the results of k$_{eff}$(analog) in those simulations. It was noticed that the values of k$_{eff}$(analog) increases considerably when the value of NPS is also increased. Even for high values of NPS (larger than 500000), the values of  k$_{eff}$(analog) obtained for various NPS are considerably different. %Table \ref{NPS} shows the k$_{eff}$(analog) values obtained for several NPS values.'
+  \vspace{10px}
+
+'Similar behavior is verified when we use SERPENT to simulate ADS. Is there an inferior limit to NPS?'
 \end{frame}
 
 
