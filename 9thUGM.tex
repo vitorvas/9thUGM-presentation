@@ -276,18 +276,62 @@ ${\bf 20000000}$ & $0.90142$ & $0.90012-0.90272$\\ \hline
 \begin{frame}
   \frametitle{ADS}
   \framesubtitle{Problem description}
+  \textbf{Four ADS cases}
+  \begin{enumerate}
+    \item GANEX fuel spiked with 50\% of thorium;
+  \item GANEX fuel spiked with 50\% of depleted uranium;
+  \item UREX$+$ fuel spiked with 50\% of thorium;
+  \item UREX$+$ fuel spiked with 50\% of depleted uranium;
+  \end{enumerate}
+  \vspace{10px}
+  \textbf{Geometry}\\
+  the subcritical core is a cylinder of $12.0m^3$ filled with a hexagonal lattice formed by 120 $^{232}ThO_2$ rods (gray fuel rods) and 36 rods with reprocessed fuel (green fuel rods). Lead was used as a coolant and as a reflector.
+\end{frame}
+
+%-------------------------------------------------
+\begin{frame}
+  \frametitle{ADS}
+  \framesubtitle{Problem description}
+  \textbf{Materials}\\
+  \vspace{10px}
+  'For all materials, cross-sections libraries available in SERPENT were specified at working temperature, wich is 1200 K for containing fissile/fissionable material and 900 K for the remaining regions. The parameters for the simulated particle population in external source mode were set to run 2 million source neutrons. The burnup calculation was performed for 10 years with the same parameters in both cases and all nuclides were included in the \texttt{dep.m} output file.'  
+
+\end{frame}
+
+%-------------------------------------------------
+\begin{frame}
+  \frametitle{ADS}
+  \framesubtitle{View}
+  \begin{center}
+    \includegraphics[scale=0.1]{figuras/50Th_geom1.png}
+    \end{center}
 \end{frame}
 
 %-------------------------------------------------
 \begin{frame}
   \frametitle{ADS}
   \framesubtitle{Results}
+  \begin{table}%[htb!]
+    \caption{Computational time}
+    \label{time}
+    \centering
+    \vspace{0.5cm}
+    \begin{tabular}{l|r}\hline   
+      Case & Computational time\\ \hline
+      Case 1 (GANEX + Th) & $194:18:44 $\\ \hline
+      Case 2 (GANEX + U) & $287:25:16 $\\ \hline
+      Case 3 (UREX + Th) & $208:41:45 $\\ \hline
+      Case 4 (UREX + U) & $300:43:54 $\\ \hline
+    \end{tabular}
+  \end{table}
+  
 \end{frame}
 
 %-------------------------------------------------
 \begin{frame}
   \frametitle{ADS}
-  \framesubtitle{Known issues}
+  \framesubtitle{Current issue (?)}
+  'When we use reprocessed fuel spiked with uranium the computational time is considerably higher. Any ideas why?'
 \end{frame}
 
 
